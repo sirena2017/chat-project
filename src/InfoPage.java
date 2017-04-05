@@ -79,9 +79,10 @@ public class InfoPage extends HttpServlet {
 				+ a + " </select> " + "<div class='input-group'></div>" + "<br>" + "<div class='btn-group'>"
 				+ "<button type='submit' class='btn btn-primary'>Start Chat</button>"
 				+ " <button type='button' class='btn btn-primary' onclick='history.go(0)'>Refresh</button>"
-				+ "<form action='/finalproject/Logout' method='POST'><button type='submit' class='btn btn-primary'>Logout</button></form>"
 
-				+ "</div> </form>	</div></div></body></html>";
+				+ "</div> </form>"
+				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-primary'>Logout</button></form>"
+				+ "	</div></div></body></html>";
 
 		response.getWriter().append(infopage);
 	}
