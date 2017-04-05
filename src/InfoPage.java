@@ -75,7 +75,7 @@ public class InfoPage extends HttpServlet {
 		String infopage = "<html>" + "<head>"
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "</head><body><br><p>Hello "+username+"</p><br><div class='container'><div class='col-md-3 col-md-offset-4'>  "
-				+ " <form action='/finalproject/InfoProcess.jsp' method='GET'><select multiple class='form-control' name='slct'>"
+				+ " <form action='/ChatProject/CreateChatConnection' method='GET'><select multiple class='form-control' name='slct'>"
 				+ a + " </select> " + "<div class='input-group'></div>" + "<br>" + "<div class='btn-group'>"
 				+ "<button type='submit' class='btn btn-primary'>Start Chat</button>"
 				+ " <button type='button' class='btn btn-primary' onclick='history.go(0)'>Refresh</button>"
@@ -83,7 +83,7 @@ public class InfoPage extends HttpServlet {
 
 				+ "</div> </form>	</div></div></body></html>";
 
-		response.getWriter().append(infopage).append(request.getContextPath());
+		response.getWriter().append(infopage);
 	}
 
 	/**
