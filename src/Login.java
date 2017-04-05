@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "</head><body background='rNjDs2.jpg'><div class='container'> "
 				+ " <div class='col-md-3 col-md-offset-4'>      "
-				+ "<form action='/finalproject/TestLogin' method='POST'>    <br><br>    <div class='panel panel-info'> <div class='panel-heading'> <h3 class='panel-title'>Login</h3> </div>      <div class='panel-body'>	 	  <div class='input-group'>       <input type='text' name='user' class='form-control' placeholder='Username' aria-describedby='basic-addon1'>      </div>     <br>     <div class='input-group'>      <input type='text' name='password' class='form-control' placeholder='Password' aria-describedby='basic-addon1'>     </div>      <br>     <button type='submit' class='btn btn-info'>Sign in</button>     </div>    </div></form>	</div></div></body></html>";
+				+ "<form action='/ChatProject/TestLogin' method='POST'>    <br><br>    <div class='panel panel-info'> <div class='panel-heading'> <h3 class='panel-title'>Login</h3> </div>      <div class='panel-body'>	 	  <div class='input-group'>       <input type='text' name='user' class='form-control' placeholder='Username' aria-describedby='basic-addon1'>      </div>     <br>     <div class='input-group'>      <input type='text' name='password' class='form-control' placeholder='Password' aria-describedby='basic-addon1'>     </div>      <br>     <button type='submit' class='btn btn-info'>Sign in</button>     </div>    </div></form>	</div></div></body></html>";
 
 		response.getWriter().append(s).append(request.getContextPath());
 		

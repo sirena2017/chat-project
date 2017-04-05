@@ -17,7 +17,7 @@ import com.sun.javafx.collections.MappingChange.Map;
 /**
  * Servlet implementation class testLogin
  */
-@WebServlet("/testLogin")
+@WebServlet("/TestLogin")
 public class TestLogin extends HttpServlet {
 	
 	EntityManagment em;
@@ -58,9 +58,9 @@ public class TestLogin extends HttpServlet {
 		if(result.equals("USER TRUE"))
 		{
 			
-			HttpSession s=request.getSession();
+			HttpSession s=request.getSession(true);
 			s.setAttribute("isLogedin", true);	
-			s.setAttribute("id", username);	
+			s.setAttribute("name", username);	
 			//s.setAttribute("username", user.getUsername());
 			s.setAttribute("password", pass);
 			sessions.add(s);
@@ -76,6 +76,7 @@ public class TestLogin extends HttpServlet {
 			referer=referer.substring(0, i)+"/InfoPage";
 			response.getWriter().append(referer+"referer is::");
 			response.sendRedirect(referer);
+			//response.getWriter().append((CharSequence) request.getSession().getAttribute("name"));
 			
 		}
 		else 
