@@ -60,7 +60,15 @@ public class InfoPage extends HttpServlet {
 				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-primary'>Logout</button></form>"
 				+ "	</div></div></body></html>";
 
-		response.getWriter().append(infopage);
+
+
+		
+		if (request.getSession().getAttribute("isLogedin").equals(true)) {
+			
+			response.getWriter().append(infopage);
+		} else {
+			response.sendRedirect("/ChatProject/Login");
+		}
 	}
 
 	/**

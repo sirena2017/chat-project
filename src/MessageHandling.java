@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LogOut
+ * Servlet implementation class MessageHandling
  */
-@WebServlet("/LogOut")
-public class LogOut extends HttpServlet {
+@WebServlet("/MessageHandling")
+public class MessageHandling extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogOut() {
+    public MessageHandling() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,39 +28,35 @@ public class LogOut extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String m = request.getParameter("message");
 		
 		
-		String id =(String) request.getSession(false).getAttribute("name");
-		String username = "";
+		request.getSession().setAttribute("message",request.getParameter("history")+"\n"+m);
+		request.getSession().setAttribute("isMsg", true);
 		
-		for (String names : TestLogin.listOfOnline) {
-			if(names.equals(id)){
-				username = names;
+//		String selectedNames = request.getParameter("selectedNames");
+		String selectedNames = "nahid";
+		
+		String[] slctedNames = selectedNames.split(",");
+		
+		HttpSession[] sessionNames = new HttpSession[slctedNames.length];
+		
+		int i = 0;
+		
+		for (HttpSession session : TestLogin.sessions) {
+			for (String string : slctedNames) {
+				if(session.getAttribute("name").equals(string)){
+					//sessionNames[i] = session;
+					session.setAttribute("message", request.getAttribute("message") +" \n" + m);
+					i++;
+ 				}
 			}
 		}
 		
-		TestLogin.listOfOnline.remove(username);
-		/*
-		for (HttpSession se : TestLogin.sessions) {
-			if(request.getAttribute("name").equals(se.getAttribute("name"))){
-				TestLogin.sessions.remove(se);
-			}
-		}
-		*/
-		request.getSession().setAttribute("isLogedin", false);
-		request.getSession().removeAttribute("name");
-		
-		response.sendRedirect("/ChatProject/Login");
-		String referer = request.getHeader("Referer");
-		int n=referer.length();
-		int i=n-1;
-		while(referer.charAt(i)!='/')
-		{
-			i--;
-		}
-		
-		referer=referer.substring(0, i)+"/Login";
-		//response.sendRedirect(referer);
+		String referer=request.getHeader("referer");
+		response.sendRedirect(referer);
 	}
 
 	/**

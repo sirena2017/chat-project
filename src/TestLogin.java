@@ -60,6 +60,8 @@ public class TestLogin extends HttpServlet {
 			s.setAttribute("isLogedin", true);
 			s.setAttribute("name", username);
 			s.setAttribute("password", pass);
+			s.setAttribute("isMsg", false);
+			s.setAttribute("isConnected", false);
 			sessions.add(s);
 			listOfOnline.add(username);
 

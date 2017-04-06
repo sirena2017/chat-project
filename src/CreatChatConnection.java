@@ -16,6 +16,7 @@ import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 @WebServlet("/CreateChatConnection")
 public class CreatChatConnection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -36,6 +37,7 @@ public class CreatChatConnection extends HttpServlet {
 		// ").append(request.getContextPath());
 
 		String[] s = request.getParameterValues("slct");
+		
 
 		String id = (String) request.getSession(false).getAttribute("name");
 		String username = "";
@@ -46,17 +48,23 @@ public class CreatChatConnection extends HttpServlet {
 			}
 		}
 
+		String n = "";
 		String g = username + " Connected to:";
 		for (String string : s) {
 			g = g + " " + string;
+			n = n + "," + string;
 		}
-	
+		
+		String message = "";
+		if(request.getSession().getAttribute("isMsg").equals(true)){
+			message = (String) request.getSession().getAttribute("message");
+		}
 
 		String chatPage = "<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'></head>"
-				+ "<body><br><<br><div class='container'><div class='col-md-2 col-md-offset-3'><form action='/finalproject/RoomManager' method='GET'>"
-				+ "<p>" + g
-				+ "</p><textarea name='history' readonly='true' class='form-control custom-control'  style='width:500px; height: 400px;'></textarea>"
+				+ "<body><br><<br><div class='container'><div class='col-md-2 col-md-offset-3'><form action='/ChatProject/MessageHandling' method='GET'>"
+				+ "<p>" + g + "<input type='hidden' name='selectedNames valu='"+n+"'>"
+				+ "</p><textarea name='history' readonly='true' class='form-control custom-control'  style='width:500px; height: 400px;'>"+message+"</textarea>"
 				+ "<br><div class='input-group'><textarea name='message' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:400px;resize:none'>"
 				+ "</textarea><button type='submit' class='btn btn-info'>Send</button> "
 				+"</div></form></div></div></body></html>";
