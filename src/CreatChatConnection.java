@@ -35,19 +35,16 @@ public class CreatChatConnection extends HttpServlet {
 
 		String[] s = request.getParameterValues("slct");
 
-
-		
-		
-		String id =(String) request.getSession(false).getAttribute("name");
+		String id = (String) request.getSession(false).getAttribute("name");
 		String username = "";
-		
+
 		for (String names : TestLogin.listOfOnline) {
-			if(names.equals(id)){
+			if (names.equals(id)) {
 				username = names;
 			}
 		}
-		
-		String g =username + " Connected to:";
+
+		String g = username + " Connected to:";
 		for (String string : s) {
 			g = g + " " + string;
 		}
@@ -55,12 +52,13 @@ public class CreatChatConnection extends HttpServlet {
 		String chatPage = "<html><head><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'></head>"
 				+ "<body><br><<br><div class='container'><div class='col-md-2 col-md-offset-3'><form action='/finalproject/RoomManager' method='GET'>"
-				+ "<p>"+ g +"</p><textarea name='history' readonly='true' class='form-control custom-control'  style='width:500px; height: 400px;'></textarea>"
+				+ "<p>" + g
+				+ "</p><textarea name='history' readonly='true' class='form-control custom-control'  style='width:500px; height: 400px;'></textarea>"
 				+ "<br><div class='input-group'><textarea name='message' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:400px;resize:none'>"
 				+ "</textarea><button type='submit' class='btn btn-info'>Sign in</button> "
 				+ "<span class='input-group-addon btn btn-primary' id='submitMyForm'>Send</span>"
 				+ "<span class='input-group-addon btn btn-primary' id='submitMyForm'>Exit</span></div></form></div></div></body></html>";
-	
+
 		response.getWriter().append(chatPage);
 	}
 
