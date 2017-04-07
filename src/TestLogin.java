@@ -53,32 +53,47 @@ public class TestLogin extends HttpServlet {
 		String result = em.userExist(user);
 
 		String referer = request.getHeader("Referer");
+		HttpSession s = request.getSession(true);
 
 		if (result.equals("USER TRUE")) {
+			if (!listOfOnline.contains(username)) {
 
-			HttpSession s = request.getSession(true);
-			s.setAttribute("isLogedin", true);
-			s.setAttribute("name", username);
-			s.setAttribute("password", pass);
-			s.setAttribute("isMsg", false);
-			s.setAttribute("isConnected", false);
-			sessions.add(s);
-			listOfOnline.add(username);
+				s.setAttribute("isLogedin", true);
+				s.setAttribute("name", username);
+				s.setAttribute("password", pass);
+				s.setAttribute("isMsg", false);
+				s.setAttribute("isJoined", false);
+				s.setAttribute("isStarter", false);
+				s.setAttribute("groupNames", "");
 
-			int n = referer.length();
-			int i = n - 1;
-			while (referer.charAt(i) != '/') {
-				i--;
+				sessions.add(s);
+				listOfOnline.add(username);
+
+				int n = referer.length();
+				int i = n - 1;
+				while (referer.charAt(i) != '/') {
+					i--;
+				}
+
+				referer = referer.substring(0, i) + "/InfoPage";
+				response.getWriter().append(referer + "referer is::");
+				response.sendRedirect(referer);
+				// response.getWriter().append((CharSequence)
+				// request.getSession().getAttribute("name"));
+			} else {
+				int n = referer.length();
+				int i = n - 1;
+				while (referer.charAt(i) != '/') {
+					i--;
+				}
+
+				referer = referer.substring(0, i) + "/InfoPage";
+				response.getWriter().append(referer + "referer is::");
+				response.sendRedirect(referer);
 			}
 
-			referer = referer.substring(0, i) + "/InfoPage";
-			response.getWriter().append(referer + "referer is::");
-			response.sendRedirect(referer);
-			// response.getWriter().append((CharSequence)
-			// request.getSession().getAttribute("name"));
-
 		} else {
-			request.getSession().setAttribute("isLogedin", false);
+			s.setAttribute("isLogedin", false);
 			response.sendRedirect(referer);
 		}
 	}

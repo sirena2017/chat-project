@@ -36,12 +36,12 @@ public class MessageHandling extends HttpServlet {
 		request.getSession().setAttribute("message",request.getParameter("history")+"\n"+m);
 		request.getSession().setAttribute("isMsg", true);
 		
-//		String selectedNames = request.getParameter("selectedNames");
-		String selectedNames = "nahid";
+		String selectedNames = (String) request.getSession().getAttribute("groupNames");
+//		String selectedNames = "nahid";
 		
 		String[] slctedNames = selectedNames.split(",");
 		
-		HttpSession[] sessionNames = new HttpSession[slctedNames.length];
+	//	HttpSession[] sessionNames = new HttpSession[slctedNames.length];
 		
 		int i = 0;
 		
@@ -49,7 +49,9 @@ public class MessageHandling extends HttpServlet {
 			for (String string : slctedNames) {
 				if(session.getAttribute("name").equals(string)){
 					//sessionNames[i] = session;
-					session.setAttribute("message", request.getAttribute("message") +" \n" + m);
+					session.setAttribute("isJoined", true);
+					session.setAttribute("groupNames",request.getSession().getAttribute("groupNames"));//////////////////////////
+					session.setAttribute("message", request.getSession().getAttribute("message") +" \n" + m);
 					i++;
  				}
 			}

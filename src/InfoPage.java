@@ -35,7 +35,10 @@ public class InfoPage extends HttpServlet {
 		String a = "";
 
 		for (String string : TestLogin.listOfOnline) {
-			a = a + "<option value=" + string + ">" + string + "</option>";
+			if (request.getSession(false).getAttribute("name").equals(string)) {
+				continue;
+			} else
+				a = a + "<option value=" + string + ">" + string + "</option>";
 		}
 
 		String id = (String) request.getSession(false).getAttribute("name");
@@ -47,7 +50,7 @@ public class InfoPage extends HttpServlet {
 			}
 		}
 
-		String infopage = "<html>" + "<head>"
+		String infopage = "<html><head><meta http-equiv='refresh' content='8' >"
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "</head><body><br><p>Hello " + username
 				+ "</p><br><div class='container'><div class='col-md-3 col-md-offset-4'>  "
@@ -60,12 +63,22 @@ public class InfoPage extends HttpServlet {
 				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-primary'>Logout</button></form>"
 				+ "	</div></div></body></html>";
 
-
-
-		
 		if (request.getSession().getAttribute("isLogedin").equals(true)) {
-			
-			response.getWriter().append(infopage);
+
+			if (request.getSession().getAttribute("isJoined").equals(false)) {
+				response.getWriter().append(infopage);
+			} else {
+
+				// response.sendRedirect("/ChatProject/CreatChatConnection");
+				// this.getServletContext().getRequestDispatcher("/CreatChatConnection").forward(request,
+				// response);
+				String c = request.getContextPath();
+
+				//response.getWriter().append("hereeeeeeeee").append(c);
+				response.sendRedirect(response.encodeURL(c+"/Login"));
+
+			}
+
 		} else {
 			response.sendRedirect("/ChatProject/Login");
 		}
