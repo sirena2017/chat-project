@@ -75,7 +75,7 @@ public class InfoPage extends HttpServlet {
 				String c = request.getContextPath();
 
 				//response.getWriter().append("hereeeeeeeee").append(c);
-				response.sendRedirect(response.encodeURL(c+"/Login"));
+				response.sendRedirect(response.encodeURL(c+"/CreateChatConnection"));
 
 			}
 
