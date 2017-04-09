@@ -57,7 +57,7 @@ public class CreatChatConnection extends HttpServlet {
 			}
 		}
 
-		String n = "";
+		String n = username;
 		String g = username + " Connected to:";
 		for (String string : s) {
 			g = g + " " + string;
