@@ -77,9 +77,11 @@ public class CreatChatConnection extends HttpServlet {
 				+ "<p>" + starter +groupNames
 				+ "</p><textarea name='history' readonly='true' class='form-control custom-control'  style='width:500px; height: 400px;'>"
 				+ message + "</textarea>"
-				+ "<br><div class='input-group'><textarea name='message' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:400px;resize:none'>"
+				+ "<br><div class='input-group'><textarea name='message' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:500px;resize:none'>"
 				+ "</textarea><button type='submit' class='btn btn-info'>Send</button> "
-				+ "</div></form></div></div></body></html>";
+				+ "</div></form>"
+				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-info'>Logout</button></form>"
+				+"</div></div></body></html>";
 
 		response.getWriter().append(chatPage);
 
