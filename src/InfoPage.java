@@ -68,14 +68,18 @@ public class InfoPage extends HttpServlet {
 			if (request.getSession().getAttribute("isJoined").equals(false)) {
 				response.getWriter().append(infopage);
 			} else {
+				
+				String referer = request.getHeader("Referer");
+				int n=referer.length();
+				int i=n-1;
+				while(referer.charAt(i)!='/')
+				{
+					i--;
+				}
+				
+				referer=referer.substring(0, i)+"/CreateChatConnection";
+				response.sendRedirect(referer);
 
-				// response.sendRedirect("/ChatProject/CreatChatConnection");
-				// this.getServletContext().getRequestDispatcher("/CreatChatConnection").forward(request,
-				// response);
-				String c = request.getContextPath();
-
-				//response.getWriter().append("hereeeeeeeee").append(c);
-				response.sendRedirect(response.encodeURL(c+"/CreateChatConnection"));
 
 			}
 

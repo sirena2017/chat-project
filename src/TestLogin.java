@@ -60,8 +60,6 @@ public class TestLogin extends HttpServlet {
 
 				s.setAttribute("isLogedin", true);
 				s.setAttribute("name", username);
-				s.setAttribute("password", pass);
-				s.setAttribute("isMsg", false);
 				s.setAttribute("isJoined", false);
 				s.setAttribute("isStarter", false);
 				s.setAttribute("groupNames", "");

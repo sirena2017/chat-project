@@ -29,8 +29,8 @@ public class LogOut extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		String id =(String) request.getSession(false).getAttribute("name");
+		HttpSession session=request.getSession(false);
+		String id =(String)session.getAttribute("name");
 		String username = "";
 		
 		for (String names : TestLogin.listOfOnline) {
@@ -38,19 +38,25 @@ public class LogOut extends HttpServlet {
 				username = names;
 			}
 		}
-		
 		TestLogin.listOfOnline.remove(username);
-		/*
+		
+		
+		
 		for (HttpSession se : TestLogin.sessions) {
-			if(request.getAttribute("name").equals(se.getAttribute("name"))){
+			if(id.equals(se.getAttribute("name"))){
 				TestLogin.sessions.remove(se);
+				break;
 			}
 		}
-		*/
-		request.getSession().setAttribute("isLogedin", false);
-		request.getSession().removeAttribute("name");
 		
-		response.sendRedirect("/ChatProject/Login");
+		request.getSession().setAttribute("isLogedin", false);
+		request.getSession().setAttribute("name","");
+		request.getSession().setAttribute("message","");
+		request.getSession().setAttribute("isJoined","");
+		request.getSession().setAttribute("isStarter","");
+		request.getSession().setAttribute("groupNames","");
+		
+	
 		String referer = request.getHeader("Referer");
 		int n=referer.length();
 		int i=n-1;
@@ -60,7 +66,7 @@ public class LogOut extends HttpServlet {
 		}
 		
 		referer=referer.substring(0, i)+"/Login";
-		//response.sendRedirect(referer);
+		response.sendRedirect(referer);
 	}
 
 	/**

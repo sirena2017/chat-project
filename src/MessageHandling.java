@@ -32,12 +32,12 @@ public class MessageHandling extends HttpServlet {
 		// response.getWriter().append("Served at:
 		// ").append(request.getContextPath());
 
+		String thisUsername = (String) request.getSession().getAttribute("name");
 		String messageHistory = (String) request.getSession().getAttribute("message");
-		String newMessage = request.getParameter("message");
-		request.getSession().setAttribute("message", messageHistory + "\n" + newMessage);
+		String newMessage = thisUsername+": "+request.getParameter("message");
+		request.getSession().setAttribute("message", messageHistory + "\n" +newMessage);
 
 		String groupNames = (String) request.getSession().getAttribute("groupNames");
-		String thisUsername = (String) request.getSession().getAttribute("name");
 		String[] slctedNames = groupNames.split(",");
 
 		for (HttpSession session : TestLogin.sessions) {
@@ -51,8 +51,8 @@ public class MessageHandling extends HttpServlet {
 					}
 
 					messageHistory = (String) session.getAttribute("message");
-					session.setAttribute("message", messageHistory + "\n" + newMessage);
-
+					session.setAttribute("message", messageHistory + "\n" +newMessage);
+					break;
 				}
 			}
 		}
