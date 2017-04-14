@@ -35,7 +35,7 @@ public class SettingChatInfo extends HttpServlet {
 		ArrayList<HttpSession> listOfParticipation = new ArrayList<HttpSession>();
 
 		String thisUsername = (String) request.getSession().getAttribute("name");
-		TestLogin.listOfOnline.remove(thisUsername);
+		//TestLogin.listOfOnline.remove(thisUsername);
 		TestLogin.listOfBusy.add(thisUsername);
 
 		String groupNames = "";

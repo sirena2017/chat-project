@@ -33,10 +33,10 @@ public class MessageHandling extends HttpServlet {
 		// ").append(request.getContextPath());
 
 		String thisUsername = (String) request.getSession().getAttribute("name");
+		TestLogin.listOfOnline.remove(thisUsername);
 		
 		String messageHistory = (String) request.getSession().getAttribute("message");
 		String newMessage = thisUsername+": "+request.getParameter("msg");
-		
 		request.getSession().setAttribute("message", messageHistory + "\n" +newMessage);
 
 		String groupNames = (String) request.getSession().getAttribute("groupNames");
