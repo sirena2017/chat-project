@@ -64,6 +64,7 @@ public class TestLogin extends HttpServlet {
 				s.setAttribute("name", username);
 				s.setAttribute("isJoined", false);
 				s.setAttribute("isStarter", false);
+				s.setAttribute("left", false);
 				s.setAttribute("message", "");
 				s.setAttribute("groupNames", "");
 
