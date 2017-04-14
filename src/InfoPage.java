@@ -69,16 +69,21 @@ public class InfoPage extends HttpServlet {
 				response.getWriter().append(infopage);
 			} else {
 				
-				String referer = request.getHeader("Referer");
-				int n=referer.length();
-				int i=n-1;
-				while(referer.charAt(i)!='/')
-				{
-					i--;
-				}
+//				String referer = request.getHeader("Referer");
+//				int n=referer.length();
+//				int i=n-1;
+//				while(referer.charAt(i)!='/')
+//				{
+//					i--;
+//				}
+//				
+//				referer=referer.substring(0, i)+"/CreateChatConnection";
+//				response.sendRedirect(referer);
 				
-				referer=referer.substring(0, i)+"/CreateChatConnection";
-				response.sendRedirect(referer);
+				String c = request.getContextPath();
+
+				//response.getWriter().append("hereeeeeeeee").append(c);
+				response.sendRedirect(response.encodeURL(c+"/CreateChatConnection"));
 
 
 			}
