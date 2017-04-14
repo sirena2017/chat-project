@@ -22,6 +22,7 @@ public class TestLogin extends HttpServlet {
 	EntityManagment em;
 	User user;
 	static ArrayList<String> listOfOnline;
+	static ArrayList<String> listOfBusy;
 	static ArrayList<HttpSession> sessions;
 
 	private static final long serialVersionUID = 1L;
@@ -34,6 +35,7 @@ public class TestLogin extends HttpServlet {
 		em = new EntityManagment();
 		user = new User();
 		listOfOnline = new ArrayList<String>();
+		listOfBusy = new ArrayList<String>();
 		sessions = new ArrayList<HttpSession>();
 		// TODO Auto-generated constructor stub
 	}

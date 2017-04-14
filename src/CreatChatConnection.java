@@ -90,7 +90,7 @@ public class CreatChatConnection extends HttpServlet {
 				+ "  <img src='http://prateekjain.co/resources/Chat%20Client%20Logo.png'></img>"
 				+ "<ul class='nav nav-pills nav-stacked'>"
 				+ "<li class='active'><a href='/ChatProject/InfoPage'>Online People</a></li>"
-				+ "<li><a href='/ChatProject/LogOut'>Logout</a></li>" + "<li><a href='/ChatProject/InfoPage'>Leave Chat</a></li>"//close the chat page
+				+ "<li><a href='/ChatProject/LogOut'>Logout</a></li>" + "<li><a href='/ChatProject/ChatRoomClosed'>Leave Chat</a></li>"//close the chat page
 				+ "</ul><br></div>" + "    <div class='col-sm-9'>" + "   <h4><small>" + starter + groupNames + "</small></h4>"
 				+ "<form action='/ChatProject/MessageHandling' method='GET'>"
 				+ "<div name='history' name='history' id='history' class='form-control custom-control' style='width:500px; height: 300px;'>"+message+"</div><br>"
