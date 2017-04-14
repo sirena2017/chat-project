@@ -33,12 +33,10 @@ public class MessageHandling extends HttpServlet {
 		// ").append(request.getContextPath());
 
 		String thisUsername = (String) request.getSession().getAttribute("name");
-		TestLogin.listOfOnline.remove(thisUsername);
-		TestLogin.listOfBusy.add(thisUsername);
 		
 		String messageHistory = (String) request.getSession().getAttribute("message");
 		String newMessage = thisUsername+": "+request.getParameter("msg");
-		System.out.println(newMessage);
+		
 		request.getSession().setAttribute("message", messageHistory + "\n" +newMessage);
 
 		String groupNames = (String) request.getSession().getAttribute("groupNames");
@@ -47,15 +45,7 @@ public class MessageHandling extends HttpServlet {
 		for (HttpSession session : TestLogin.sessions) {
 			for (String string : slctedNames) {
 				if (session.getAttribute("name").equals(string)) {
-
-					if (request.getSession().getAttribute("isStarter").equals(true)
-							&& session.getAttribute("isJoined").equals(false)) {
-						session.setAttribute("isJoined", true);
-						session.setAttribute("groupNames", groupNames.replaceAll(string, thisUsername));
-						TestLogin.listOfOnline.remove(string);
-						TestLogin.listOfBusy.add(string);
-					}
-
+					
 					messageHistory = (String) session.getAttribute("message");
 					session.setAttribute("message", messageHistory + "\n" +newMessage);
 					break;

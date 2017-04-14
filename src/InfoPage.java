@@ -41,20 +41,20 @@ public class InfoPage extends HttpServlet {
 				a = a + "<option value=" + string + ">" + string + "</option>";
 		}
 
-		String id = (String) request.getSession(false).getAttribute("name");
-		String username = "";
+		String username = (String) request.getSession(false).getAttribute("name");
+/*		String username = "";
 
 		for (String names : TestLogin.listOfOnline) {
 			if (names.equals(id)) {
 				username = names;
 			}
-		}
+		}*/
 
 		String infopage = "<html><head><meta http-equiv='refresh' content='8' >"
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
 				+ "</head><body><br><p>Hello " + username
 				+ "</p><br><div class='container'><div class='col-md-3 col-md-offset-4'>  "
-				+ " <form action='/ChatProject/CreateChatConnection' method='GET'><select multiple class='form-control' name='slct'>"
+				+ " <form action='/ChatProject/SettingChatInfo' method='GET'><select multiple class='form-control' name='slct'>"
 				+ a + " </select> " + "<div class='input-group'></div>" + "<br>" + "<div class='btn-group'>"
 				+ "<button type='submit' class='btn btn-primary'>Start Chat</button>"
 				+ " <button type='button' class='btn btn-primary' onclick='history.go(0)'>Refresh</button>"
@@ -69,21 +69,21 @@ public class InfoPage extends HttpServlet {
 				response.getWriter().append(infopage);
 			} else {
 				
-//				String referer = request.getHeader("Referer");
-//				int n=referer.length();
-//				int i=n-1;
-//				while(referer.charAt(i)!='/')
-//				{
-//					i--;
-//				}
-//				
-//				referer=referer.substring(0, i)+"/CreateChatConnection";
-//				response.sendRedirect(referer);
+/*				String referer = request.getHeader("Referer");
+				int n=referer.length();
+				int i=n-1;
+				while(referer.charAt(i)!='/')
+				{
+					i--;
+				}
+				
+				referer=referer.substring(0, i)+"/CreateChatConnection";*/
+				response.sendRedirect("/ChatProject/CreateChatConnection");
 				
 				String c = request.getContextPath();
 
 				//response.getWriter().append("hereeeeeeeee").append(c);
-				response.sendRedirect(response.encodeURL(c+"/CreateChatConnection"));
+				//response.sendRedirect(response.encodeURL(c+"/SettingChatInfo"));
 
 
 			}

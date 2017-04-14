@@ -38,35 +38,20 @@ public class CreatChatConnection extends HttpServlet {
 
 		String[] s;
 
-		String id = (String) request.getSession(false).getAttribute("name");
-		String username = "";
+		String username = (String) request.getSession(false).getAttribute("name");
+/*		String username = "";
 
 		for (String names : TestLogin.listOfOnline) {
 			if (names.equals(id)) {
 				username = names;
 			}
-		}
+		}*/
 		String groupNames = "";
 		String starter = username + " Connected to:";
-
-		if (request.getSession().getAttribute("isJoined").equals(true)) {
-
-			groupNames = ((String) request.getSession().getAttribute("groupNames"));
-
-		} else {
-			request.getSession().setAttribute("isStarter", true);
-			s = request.getParameterValues("slct");
-			for (String string : s) {
-				groupNames = groupNames + "," + string;
-			}
-			request.getSession().setAttribute("groupNames", groupNames);
-		}
+		groupNames = ((String) request.getSession().getAttribute("groupNames"));
 
 		String message;
 		message = (String) request.getSession().getAttribute("message");
-		if (message == null) {
-			message = "";
-		}
 
 		String chatPage = "<html lang='en'><head>" + "<title>Chat Page</title><meta http-equiv='refresh' content='8' >"
 				+ "<meta charset='utf-8'>" + "<meta name='viewport' content='width=device-width, initial-scale=1'>"
