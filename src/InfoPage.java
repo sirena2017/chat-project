@@ -62,7 +62,7 @@ public class InfoPage extends HttpServlet {
 		+"<body><div class='container-fluid'><div class='row content'><div class='col-sm-3 sidenav'>"
 		      +"<img src='http://prateekjain.co/resources/Chat%20Client%20Logo.png'></img><ul class='nav nav-pills nav-stacked'>"
 		        +"<li ><a href='#' onclick='history.go(0)'>Refresh</a></li><li><a href='/ChatProject/LogOut'>Logout</a></li></ul><br></div><div class='col-sm-9'>"
-			+"<h2>Hello"+username+"<h2><hr><h4><small>select one or more(using ctrl) row to start chat</small></h4><br>"
+			+"<h2>Hello "+username+"<h2><hr><h4><small>select one or more(using ctrl) row to start chat</small></h4><br>"
 		      +"<form action='/ChatProject/SettingChatInfo' method='GET'>"
 						   +"<select multiple class='form-control' name='slct'>"+a+"</select><br><div class='btn-group'><button type='submit' class='btn btn-default'>Start Chat</button>"
 						  +"</div> </form><br><br><br><br><br><br><br><br><h4><small>Use Live Chat</small></h4><hr><br><br>     </div></div></div>"
