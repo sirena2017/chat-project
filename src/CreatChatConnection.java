@@ -63,7 +63,7 @@ public class CreatChatConnection extends HttpServlet {
 				+ "function f2() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128513;';}"
 				+ "function f3() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128514;';}"
 				+ "function f4() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128521;';}"
-				+"  function func(){var a = document.getElementById('message').textContent;document.getElementById('msg').value = a; var b = document.getElementById('msg').value; alert(b);}"
+				+"  function func(){var a = document.getElementById('message').textContent;document.getElementById('msg').value = a;}"
 				+ "</script>" 
 				+ "<style>" + ".row.content {height: 1500px}"
 				+ ".sidenav {      background-color: #f1f1f1;      height: 100%;    }"
