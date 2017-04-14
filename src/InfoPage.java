@@ -50,18 +50,23 @@ public class InfoPage extends HttpServlet {
 			}
 		}*/
 
-		String infopage = "<html><head><meta http-equiv='refresh' content='8' >"
-				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
-				+ "</head><body><br><p>Hello " + username
-				+ "</p><br><div class='container'><div class='col-md-3 col-md-offset-4'>  "
-				+ " <form action='/ChatProject/SettingChatInfo' method='GET'><select multiple class='form-control' name='slct'>"
-				+ a + " </select> " + "<div class='input-group'></div>" + "<br>" + "<div class='btn-group'>"
-				+ "<button type='submit' class='btn btn-primary'>Start Chat</button>"
-				+ " <button type='button' class='btn btn-primary' onclick='history.go(0)'>Refresh</button>"
-
-				+ "</div> </form>"
-				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-primary'>Logout</button></form>"
-				+ "	</div></div></body></html>";
+		String infopage = "<html lang='en'><head><title>List Page</title>"
+		  +"<meta charset='utf-8'><meta http-equiv='refresh' content='8' ><meta name='viewport' content='width=device-width, initial-scale=1'>"
+		  +"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+		  +"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js'></script><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>"
+		    +"<style> .row.content {height: 1500px}"
+		    +".sidenav {background-color: #f1f1f1;height: 100%; }"
+		    +"footer {background-color: #555;color: white;padding: 15px;}" 
+		    +"@media screen and (max-width: 767px) {.sidenav {height: auto;padding: 15px;}"
+		      +".row.content {height: auto;} }</style></head>"
+		+"<body><div class='container-fluid'><div class='row content'><div class='col-sm-3 sidenav'>"
+		      +"<img src='http://prateekjain.co/resources/Chat%20Client%20Logo.png'></img><ul class='nav nav-pills nav-stacked'>"
+		        +"<li ><a href='#' onclick='history.go(0)'>Refresh</a></li><li><a href='/ChatProject/LogOut'>Logout</a></li></ul><br></div><div class='col-sm-9'>"
+			+"<h2>Hello"+username+"<h2><hr><h4><small>select one or more(using ctrl) row to start chat</small></h4><br>"
+		      +"<form action='/ChatProject/SettingChatInfo' method='GET'>"
+						   +"<select multiple class='form-control' name='slct'>"+a+"</select><br><div class='btn-group'><button type='submit' class='btn btn-default'>Start Chat</button>"
+						  +"</div> </form><br><br><br><br><br><br><br><br><h4><small>Use Live Chat</small></h4><hr><br><br>     </div></div></div>"
+		+"<footer class='container-fluid'><p>contact us</p><p>Mazhari44@gmail.com</p><p>Ghelichkhani.m@gmail.com</p></footer></body></html>";
 
 		if (request.getSession().getAttribute("isLogedin").equals(true)) {
 
