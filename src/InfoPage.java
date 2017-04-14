@@ -35,7 +35,7 @@ public class InfoPage extends HttpServlet {
 		String a = "";
 
 		for (String string : TestLogin.listOfOnline) {
-			if (request.getSession(false).getAttribute("name").equals(string)) {
+			if (request.getSession().getAttribute("name").equals(string)) {
 				continue;
 			} else
 				a = a + "<option value=" + string + ">" + string + "</option>";
