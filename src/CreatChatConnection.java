@@ -38,7 +38,7 @@ public class CreatChatConnection extends HttpServlet {
 
 		String[] s;
 
-		String username = (String) request.getSession(false).getAttribute("name");
+		String username = (String) request.getSession().getAttribute("name");
 /*		String username = "";
 
 		for (String names : TestLogin.listOfOnline) {
