@@ -68,28 +68,40 @@ public class CreatChatConnection extends HttpServlet {
 			message = "";
 		}
 
-		String chatPage = "<html><head><meta http-equiv='refresh' content='8' >"
-				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
-				+ "<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
-				+"<script>"
+		String chatPage = "<html lang='en'><head>" + "<title>Chat Page</title><meta http-equiv='refresh' content='8' >"
+				+ "<meta charset='utf-8'>" + "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+				+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js'></script>"
+				+ "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>"
+				+ "<script>"
 				+ "function f1() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128512;';}"
 				+ "function f2() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128513;';}"
 				+ "function f3() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128514;';}"
 				+ "function f4() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128521;';}"
-				+ "</script>" + "</head>" + "<body>" + "<br><<br>"
-				+ "<div class='container'><div class='col-md-2 col-md-offset-3'><form action='/ChatProject/MessageHandling' method='GET'>"
-				+ "<p>" + starter + groupNames + "</p>" + "<div class='input-group'>"
-				+ "<div name='history' id='history' class='form-control custom-control' style='width:500px; height: 300px;'>"
-				+ message + "</div>"
-				+ "<br><div class='input-group'><div name='message' id='message' contenteditable='true' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:280px;resize:none'></div>"
-				+ "<button type='submit' class='input-group-addon btn btn-primary'>Send</button>"
-				+ "<button type='button' class='input-group-addon btn btn-primary' id='em1' onclick='f1()'>&#128512;</button>"
-				+ "<button type='button' class='input-group-addon btn btn-primary' id='em2' onclick='f2()'>&#128513;</button>"
-				+ "<button type='button' class='input-group-addon btn btn-primary' id='em3' onclick='f3()'>&#128514;</button>"
-				+ "<button type='button' class='input-group-addon btn btn-primary' id='em4' onclick='f4()'>&#128521;</button>"
-				+ "</div></form>"
-				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-info'>Logout</button></form>"
-				+ "</div></div></body></html>";
+				+"  function func(){var a = document.getElementById('message').textContent;document.getElementById('msg').value = a; var b = document.getElementById('msg').value; alert(b);}"
+				+ "</script>" 
+				+ "<style>" + ".row.content {height: 1500px}"
+				+ ".sidenav {      background-color: #f1f1f1;      height: 100%;    }"
+				+ "footer {      background-color: #555;      color: white;      padding: 15px;    }"
+				+ "@media screen and (max-width: 767px) {      .sidenav {        height: auto;        padding: 15px;      }"
+				+ ".row.content {height: auto;}    }" + "</style></head>" + "<body>"
+
+				+ "<div class='container-fluid'>" + "<div class='row content'>" + "  <div class='col-sm-3 sidenav'>"
+				+ "  <img src='http://prateekjain.co/resources/Chat%20Client%20Logo.png'></img>"
+				+ "<ul class='nav nav-pills nav-stacked'>"
+				+ "<li class='active'><a href='/ChatProject/InfoPage'>Online People</a></li>"
+				+ "<li><a href='/ChatProject/LogOut'>Logout</a></li>" + "<li><a href='/ChatProject/InfoPage'>Leave Chat</a></li>"//close the chat page
+				+ "</ul><br></div>" + "    <div class='col-sm-9'>" + "   <h4><small>" + starter + groupNames + "</small></h4>"
+				+ "<form action='/ChatProject/MessageHandling' method='GET'>"
+				+ "<div name='history' name='history' id='history' class='form-control custom-control' style='width:500px; height: 300px;'>"+message+"</div><br>"
+				+ "<div name='message' id='message' contenteditable='true' class='form-control custom-control' placeholder='Write Message Here' style='width:500px;resize:none'></div>"
+				+ "<button onclick='func()' type='submit' class='btn btn-default'>Send</button>"
+				+ "<button type='button' class='btn btn-default' id='em1' onclick='f1()'>&#128512;</button>"
+				+ "<button type='button' class='btn btn-default' id='em2' onclick='f2()'>&#128513;</button>"
+				+ "<button type='button' class='btn btn-default' id='em3' onclick='f3()'>&#128514;</button>"
+				+ "<button type='button' class='btn btn-default' id='em4' onclick='f4()'>&#128521;</button>"
+				+ "<input type='hidden' name='msg; id='msg' value=''></form><br><br>" + "<h4><small>Use Live Chat</small></h4><hr><br><br>" + "</div>  </div></div>"
+				+ "<footer class='container-fluid'>" + "<p>Footer Text</p></footer>" + "</body></html>";
 
 		response.getWriter().append(chatPage);
 
