@@ -100,7 +100,7 @@ public class CreatChatConnection extends HttpServlet {
 				+ "<button type='button' class='btn btn-default' id='em2' onclick='f2()'>&#128513;</button>"
 				+ "<button type='button' class='btn btn-default' id='em3' onclick='f3()'>&#128514;</button>"
 				+ "<button type='button' class='btn btn-default' id='em4' onclick='f4()'>&#128521;</button>"
-				+ "<input type='hidden' name='msg; id='msg' value=''></form><br><br>" + "<h4><small>Use Live Chat</small></h4><hr><br><br>" + "</div>  </div></div>"
+				+ "<input type='hidden' name='msg' id='msg' value=''></form><br><br>" + "<h4><small>Use Live Chat</small></h4><hr><br><br>" + "</div>  </div></div>"
 				+ "<footer class='container-fluid'>" + "<p>Footer Text</p></footer>" + "</body></html>";
 
 		response.getWriter().append(chatPage);
