@@ -35,11 +35,11 @@ public class ChatRoomClosed extends HttpServlet {
 		
 
 		request.getSession().setAttribute("message","");
-		request.getSession().setAttribute("isJoined","");
-		request.getSession().setAttribute("isStarter","");
+		request.getSession().setAttribute("isJoined",false);
+		request.getSession().setAttribute("isStarter",false);
 		request.getSession().setAttribute("groupNames","");
 		
-		
+		/*
 		String referer = request.getHeader("Referer");
 		int n = referer.length();
 		int i = n - 1;
@@ -48,7 +48,9 @@ public class ChatRoomClosed extends HttpServlet {
 		}
 
 		referer = referer.substring(0, i) + "/InfoPage";
-		response.sendRedirect(referer);
+		response.sendRedirect(referer);*/
+		
+		response.sendRedirect("/ChatProject/InfoPage");
 		
 	}
 
