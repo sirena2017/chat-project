@@ -37,7 +37,7 @@ public class CreatChatConnection extends HttpServlet {
 		// ").append(request.getContextPath());
 
 		String[] s;
-		
+
 		String id = (String) request.getSession(false).getAttribute("name");
 		String username = "";
 
@@ -48,8 +48,7 @@ public class CreatChatConnection extends HttpServlet {
 		}
 		String groupNames = "";
 		String starter = username + " Connected to:";
-		
-		
+
 		if (request.getSession().getAttribute("isJoined").equals(true)) {
 
 			groupNames = ((String) request.getSession().getAttribute("groupNames"));
@@ -62,26 +61,35 @@ public class CreatChatConnection extends HttpServlet {
 			}
 			request.getSession().setAttribute("groupNames", groupNames);
 		}
-	
 
 		String message;
-			message = (String) request.getSession().getAttribute("message");
-			if(message==null){
-				message="";
-			}
+		message = (String) request.getSession().getAttribute("message");
+		if (message == null) {
+			message = "";
+		}
 
 		String chatPage = "<html><head><meta http-equiv='refresh' content='8' >"
 				+ "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>"
-				+ "<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'></head>"
-				+ "<body><br><<br><div class='container'><div class='col-md-2 col-md-offset-3'><form action='/ChatProject/MessageHandling' method='GET'>"
-				+ "<p>" + starter +groupNames+"</p>"
-				+ "<div class='input-group'>"
-				+ "<div name='history' id='history' class='form-control custom-control' style='width:500px; height: 300px;'></div>"
-				+ message + "</textarea>"
-				+ "<br><div class='input-group'><div name='message' id='message' contenteditable='true' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:280px;resize:none'></div><button type='submit' class='btn btn-info'>Send</button> "
+				+ "<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
+				+"<script>"
+				+ "function f1() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128512;';}"
+				+ "function f2() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128513;';}"
+				+ "function f3() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128514;';}"
+				+ "function f4() {var m = document.getElementById('message').textContent;document.getElementById('message').innerHTML = m + '&#128521;';}"
+				+ "</script>" + "</head>" + "<body>" + "<br><<br>"
+				+ "<div class='container'><div class='col-md-2 col-md-offset-3'><form action='/ChatProject/MessageHandling' method='GET'>"
+				+ "<p>" + starter + groupNames + "</p>" + "<div class='input-group'>"
+				+ "<div name='history' id='history' class='form-control custom-control' style='width:500px; height: 300px;'>"
+				+ message + "</div>"
+				+ "<br><div class='input-group'><div name='message' id='message' contenteditable='true' class='form-control custom-control' rows='2' placeholder='Write Message Here' style='width:280px;resize:none'></div>"
+				+ "<button type='submit' class='input-group-addon btn btn-primary'>Send</button>"
+				+ "<button type='button' class='input-group-addon btn btn-primary' id='em1' onclick='f1()'>&#128512;</button>"
+				+ "<button type='button' class='input-group-addon btn btn-primary' id='em2' onclick='f2()'>&#128513;</button>"
+				+ "<button type='button' class='input-group-addon btn btn-primary' id='em3' onclick='f3()'>&#128514;</button>"
+				+ "<button type='button' class='input-group-addon btn btn-primary' id='em4' onclick='f4()'>&#128521;</button>"
 				+ "</div></form>"
 				+ "<form action='/ChatProject/LogOut' method='GET'><button type='submit' class='btn btn-info'>Logout</button></form>"
-				+"</div></div></body></html>";
+				+ "</div></div></body></html>";
 
 		response.getWriter().append(chatPage);
 
