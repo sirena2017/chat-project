@@ -34,7 +34,8 @@ public class MessageHandling extends HttpServlet {
 
 		String thisUsername = (String) request.getSession().getAttribute("name");
 		String messageHistory = (String) request.getSession().getAttribute("message");
-		String newMessage = thisUsername+": "+request.getParameter("message");
+		String newMessage = thisUsername+": "+request.getParameter("msg");
+		System.out.println(newMessage);
 		request.getSession().setAttribute("message", messageHistory + "\n" +newMessage);
 
 		String groupNames = (String) request.getSession().getAttribute("groupNames");
