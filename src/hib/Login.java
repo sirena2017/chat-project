@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String s = "<html lang='en'><head><title>List Page</title>"
+		String s = "<html lang='en'><head><title>Login Page</title>"
 				  +"<meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>"
 				  +"<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>"
 				  +"<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js'></script><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>"
@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
     +"<div class='col-sm-9'>	  <br>   <form action='/ChatProject/TestLogin' method='POST'>    <br><br>	<div class='col-md-4 col-md-offset-3'>"
     +"<div class='panel panel-info'> <div class='panel-heading'> <h3 class='panel-title'>Please Sign In</h3> </div>      <div class='panel-body'>	 <div class='input-group'>"
        +"<input type='text' name='user' id='user' class='form-control' placeholder='Username' aria-describedby='basic-addon1'>      </div>     <br>     <div class='input-group'>"
-      +"<input type='text' name='password' class='form-control' placeholder='Password' aria-describedby='basic-addon1'></div> <br><button type='submit' class='btn btn-info'>Sign in</button></div></div></div></form></div></div></div>"
+      +"<input type='password' name='password' class='form-control' placeholder='Password' aria-describedby='basic-addon1'></div> <br><button type='submit' class='btn btn-info'>Sign in</button></div></div></div></form></div></div></div>"
 		+"<footer class='container-fluid'><p>contact us</p><p>Mazhari44@gmail.com</p><p>Ghelichkhani.m@gmail.com</p></footer></body></html>";
 
 		response.getWriter().append(s);
