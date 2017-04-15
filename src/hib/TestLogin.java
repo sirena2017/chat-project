@@ -1,3 +1,4 @@
+package hib;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,6 +49,17 @@ public class TestLogin extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		String username = request.getParameter("user");
 		user.setUsername(username);
 		String pass = request.getParameter("password");
@@ -98,17 +110,6 @@ public class TestLogin extends HttpServlet {
 			s.setAttribute("isLogedin", false);
 			response.sendRedirect(referer);
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
